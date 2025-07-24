@@ -1,4 +1,4 @@
-import { Room } from '../models/Room.model.js';
+import { Room } from '../../models/Room.model.js';
 import { roomService } from '../services/room.service.js';
 
 const createRoom = async (req, res) => {
@@ -26,7 +26,7 @@ const deleteRoom = async (req, res) => {
     return res.sendStatus(401);
   }
 
-  await Room.destroy({ where: { roomId } });
+  await Room.destroy({ where: { id: roomId } });
 
   res.sendStatus(204);
 };

@@ -15,4 +15,8 @@ export const Message = client.define('Message', {
     defaultValue: DataTypes.NOW,
     allowNull: false,
   },
+  roomId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
 });

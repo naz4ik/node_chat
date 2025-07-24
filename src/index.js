@@ -1,11 +1,11 @@
 'use strict';
 import express from 'express';
 import cors from 'cors';
-import { userRouter } from './routes/user.router.js';
-import { messageRouter } from './routes/message.router.js';
-import { roomRouter } from './routes/room.routes.js';
+import { userRouter } from './back-end/routes/user.router.js';
+import { messageRouter } from './back-end/routes/message.router.js';
+import { roomRouter } from './back-end/routes/room.routes.js';
 import { WebSocketServer } from 'ws';
-import { messageEmitter } from './controllers/message.controller.js';
+import { messageEmitter } from './back-end/controllers/message.controller.js';
 
 const PORT = process.env.PORT || 3005;
 const app = express();
