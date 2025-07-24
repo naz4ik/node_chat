@@ -5,7 +5,7 @@ const findMessages = async (roomId) => {
 };
 
 const createNewMessage = (roomId, text, userId) => {
-  return Message.create({ roomId, userId, text });
+  return Message.create({ roomId, text, userId });
 };
 
 export const messagesService = {

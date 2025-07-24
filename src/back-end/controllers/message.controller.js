@@ -26,7 +26,7 @@ const createMessage = async (req, res) => {
 
   messageEmitter.emit('message', newMessage);
 
-  res.status(201).send(newMessage);
+  res.status(200).send(newMessage);
 };
 
 export const messagesController = {

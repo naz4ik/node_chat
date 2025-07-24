@@ -33,8 +33,27 @@ const server = app.listen(PORT, () => {
 
 const wss = new WebSocketServer({ server });
 
+wss.on('connection', (ws) => {
+  ws.roomId = null;
+
+  ws.on('message', (data) => {
+    try {
+      const parsed = JSON.parse(data);
+
+      if (parsed.type === 'join' && parsed.roomId) {
+        ws.roomId = parsed.roomId;
+      }
+    } catch (error) {
+      console.error('Invalid message from client', error);
+    }
+  });
+});
+
 messageEmitter.on('message', (message) => {
   for (const client of wss.clients) {
-    client.send(JSON.stringify(message));
+    if (client.readyState === 1 && client.roomId === message.roomId) {
+      client.send(JSON.stringify(message));
+    }
   }
 });
+
